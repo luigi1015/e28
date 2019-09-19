@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang='en'>
+
+	<head>
+		<title>Rock Paper Scissors</title>
+		<meta charset='utf-8'>
+	</head>
+
+	<body>
+		<h1>Rock Paper Scissors</h1>
+		<br>
+		Choose your move:
+		<br>
+		<button onclick="play('Rock')">Rock</button>
+		<br>
+		<button onclick="play('Paper')">Paper</button>
+		<br>
+		<button onclick="play('Scissors')">Scissors</button>
+		<br>
+		Computer move: <span id="computerMove"></span>
+		<br>
+		Result: <span id="result"></span>
+
+		<script>
+			function play(move) {
+				const computerMove = getComputerMove();
+				if (move === computerMove) {
+					displayResult( computerMove, 'Tie');
+					return;
+				}
+				switch (move) {
+					case 'Rock':
+						if (computerMove === 'Paper') {
+							displayResult( computerMove, 'Computer Won');
+						} else if (computerMove === 'Scissors') {
+							displayResult( computerMove, 'You Won');
+						}
+						break;
+					case 'Paper':
+						if (computerMove === 'Rock') {
+							displayResult( computerMove, 'You Won');
+						} else if (computerMove === 'Scissors') {
+							displayResult( computerMove, 'Computer Won');
+						}
+						break;
+					case 'Scissors':
+						if (computerMove === 'Rock') {
+							displayResult( computerMove, 'Computer Won');
+						} else if (computerMove === 'Paper') {
+							displayResult( computerMove, 'You Won');
+						}
+						break;
+				}
+			}
+
+			function getComputerMove() {
+				const moves = ['Rock', 'Paper', 'Scissors'];
+				return moves[Math.floor(Math.random() * 3)];
+			}
+
+			function displayResult(computerMove, result) {
+				const computerMoveSpan = document.getElementById('computerMove');
+				const resultSpan = document.getElementById('result');
+
+				computerMoveSpan.textContent = computerMove;
+				resultSpan.textContent = result;
+			}
+		</script>
+
+	</body>
+
+</html>
