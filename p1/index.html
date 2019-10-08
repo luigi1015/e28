@@ -1,13 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>Title</title>
+		<title>Rock Paper Scissors</title>
 	</head>
 
 	<body>
 		<div id="app">
+			<h1>Rock Paper Scissors</h1>
+			<br>
+			Choose your move:
+			<br>
+			<input type='radio' id='Rock' value='Rock' v-model='move'>
+			<label for='easy'>Rock</label>
+			<br>
+			<input type='radio' id='Paper' value='Paper' v-model='move'>
+			<label for='easy'>Paper</label>
+			<br>
+			<input type='radio' id='Scissors' value='Scissors' v-model='move'>
+			<label for='easy'>Scissors</label>
+			<br>
+			<button v-on:click='submitMove'>Choose</button>
+			<br>
 			{{ message }}
 		</div>
 		<!-- development version of vue.js -->
