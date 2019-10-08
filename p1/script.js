@@ -40,13 +40,6 @@ var app = new Vue({
 						break;
 				}
 			}
-			/*
-			if (!!this.choice) {
-				this.message = "You chose " + this.choice;
-			} else {
-				this.message = "There was a problem, please make sure you chose a valid move.";
-			}
-			*/
 		}
 	}
 });
