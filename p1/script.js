@@ -2,40 +2,48 @@ var app = new Vue({
 	el: '#app',
 	data: {
 		message: '',
-		move: null
+		move: null,
+		computerMove: null,
+		moved: false,
+		winner: null
 	},
 	methods: {
 		submitMove: function (event) {
-			const computerMove = getComputerMove();
+			this.computerMove = getComputerMove();
+			this.message = '';
 			const problemMessage = 'There was a problem, please make sure you chose a valid move.'
 			if (!this.move) {
 				this.message = problemMessage;
-			} else if (this.move === computerMove) {
-				this.message = 'Tie';
+			} else if (this.move === this.computerMove) {
+				this.winner = 'Tie';
 			} else {
 				switch (this.move) {
 					case 'Rock':
-						if (computerMove === 'Paper') {
-							this.message = 'Computer Won';
-						} else if (computerMove === 'Scissors') {
-							this.message = 'You Won';
+						this.moved = true;
+						if (this.computerMove === 'Paper') {
+							this.winner = 'Computer';
+						} else if (this.computerMove === 'Scissors') {
+							this.winner = 'User';
 						}
 						break;
 					case 'Paper':
-						if (computerMove === 'Rock') {
-							this.message = 'You Won';
-						} else if (computerMove === 'Scissors') {
-							this.message = 'Computer Won';
+						this.moved = true;
+						if (this.computerMove === 'Rock') {
+							this.winner = 'User';
+						} else if (this.computerMove === 'Scissors') {
+							this.winner = 'Computer';
 						}
 						break;
 					case 'Scissors':
-						if (computerMove === 'Rock') {
-							this.message = 'Computer Won';
-						} else if (computerMove === 'Paper') {
-							this.message = 'You Won';
+						this.moved = true;
+						if (this.computerMove === 'Rock') {
+							this.winner = 'Computer';
+						} else if (this.computerMove === 'Paper') {
+							this.winner = 'User';
 						}
 						break;
 					default:
+						this.moved = false;
 						this.message = problemMessage;
 						break;
 				}

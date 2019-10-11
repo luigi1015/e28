@@ -9,6 +9,22 @@
 			[v-cloak] {
 				display: none
 			}
+
+			#win {
+				color: green;
+			}
+
+			#lose {
+				color: red;
+			}
+
+			#tie {
+				color: blue;
+			}
+
+			#error {
+				color: red;
+			}
 		</style>
 	</head>
 
@@ -28,8 +44,17 @@
 			<label for='easy'>Scissors</label>
 			<br>
 			<button v-on:click='submitMove'>Choose</button>
+			<div v-show='moved'>
+				Your move: {{ move }}
+				<br>
+				Computer's move: {{ computerMove }}
+				<br>
+				<span v-show='winner == "User"' id='win'>You won!</span>
+				<span v-show='winner == "Computer"' id='lose'>You lost.</span>
+				<span v-show='winner == "Tie"' id='tie'>It was a tie.</span>
+			</div>
 			<br>
-			{{ message }}
+			<span v-show='message' id='error'>{{ message }}</span>
 		</div>
 		<!-- development version of vue.js -->
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
