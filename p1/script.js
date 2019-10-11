@@ -3,6 +3,7 @@ var app = new Vue({
 	data: {
 		message: '',
 		move: null,
+		userMove: null,
 		computerMove: null,
 		moved: false,
 		winner: null
@@ -15,11 +16,14 @@ var app = new Vue({
 			if (!this.move) {
 				this.message = problemMessage;
 			} else if (this.move === this.computerMove) {
+				this.moved = true;
+				this.userMove = this.move;
 				this.winner = 'Tie';
 			} else {
 				switch (this.move) {
 					case 'Rock':
 						this.moved = true;
+						this.userMove = this.move;
 						if (this.computerMove === 'Paper') {
 							this.winner = 'Computer';
 						} else if (this.computerMove === 'Scissors') {
@@ -28,6 +32,7 @@ var app = new Vue({
 						break;
 					case 'Paper':
 						this.moved = true;
+						this.userMove = this.move;
 						if (this.computerMove === 'Rock') {
 							this.winner = 'User';
 						} else if (this.computerMove === 'Scissors') {
@@ -36,6 +41,7 @@ var app = new Vue({
 						break;
 					case 'Scissors':
 						this.moved = true;
+						this.userMove = this.move;
 						if (this.computerMove === 'Rock') {
 							this.winner = 'Computer';
 						} else if (this.computerMove === 'Paper') {
