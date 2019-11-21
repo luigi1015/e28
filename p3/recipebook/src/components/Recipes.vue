@@ -2,28 +2,30 @@
 	<div>
 		Recipe List
 		<br>
-		<ul>
-			<li v-for='(item) in recipes' v-bind:key='item.id'>{{ item.name }}</li>
+		<ul v-if='recipes'>
+			<li v-for='(item) in recipes' v-bind:key='item.id'>
+				<router-link :to='{ name:"recipe", params: { id: item.id }}'>{{ item.name }}</router-link>
+			</li>
 		</ul>
 	</div>
 </template>
 
 <script>
+const axios = require('axios');
+
 export default {
 	name: 'Recipes',
 	props: {
-		msg: String
 	},
 	data: function () {
 		return {
-			recipes: [
-				{id: 1, name: "Recipe 1"},
-				{id: 2, name: "Recipe 2"},
-				{id: 3, name: "Recipe 3"},
-				{id: 4, name: "Recipe 4"},
-				{id: 5, name: "Recipe 5"}
-			]
+			recipes: null
 		}
+	},
+	mounted() {
+		this.recipes = axios
+			.get('https://my-json-server.typicode.com/luigi1015/e28-recipebook-api/recipes')
+			.then(response => (this.recipes = response.data));
 	}
 }
 </script>

@@ -12,7 +12,6 @@
 export default {
 	name: 'ShoppingList',
 	props: {
-		msg: String
 	},
 	data: function () {
 		return {
