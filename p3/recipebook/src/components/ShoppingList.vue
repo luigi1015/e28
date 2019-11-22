@@ -3,7 +3,7 @@
 		ShoppingList
 		<br>
 		<ul>
-			<li v-for='(item) in shoppingList' v-bind:key='item.id'>{{ item }}</li>
+			<li v-for='(item) in shoppingList' v-bind:key='item.id'>{{ item }}  - <button v-on:click="deleteShopppingListItem(item)">Delete from Shoppping List</button></li>
 		</ul>
 		Number of items: {{ shoppingList.length }}
 		<br>
@@ -27,6 +27,13 @@ export default {
 		const shopppingListLocalStorage = localStorage.getItem('shopppingList');
 		if( shopppingListLocalStorage !== null ) {
 			this.shoppingList = JSON.parse(shopppingListLocalStorage);
+		}
+	},
+	methods: {
+		deleteShopppingListItem: function (item) {
+			var itemId = this.shoppingList.indexOf(item);
+			this.shoppingList.splice(itemId, 1);
+			localStorage.setItem('shopppingList', JSON.stringify(this.shoppingList));
 		}
 	}
 }

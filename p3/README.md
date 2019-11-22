@@ -13,6 +13,7 @@ The main featured I implemented are:
 * When a recipe is on the favorites list, "Favorites!" text shows up on the top of the recipe page.
 * There's a button next to each ingredient on the recipe page which allows the user to add the ingredient to a shopping list in local storage.
 * There's a shopping list page, at the route for /shoppinglist, that shows the shopping list in local storage.
+* There's a button next to each item on the shopping list to delete it from the list (including in local storage).
 
 ## Outside resources
 * A mock data server at [https://my-json-server.typicode.com/luigi1015/e28-recipebook-api](https://my-json-server.typicode.com/luigi1015/e28-recipebook-api)
