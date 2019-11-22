@@ -7,6 +7,8 @@
 				<router-link :to='{ name:"recipe", params: { id: item.id }}'>{{ item.name }}</router-link>
 			</li>
 		</ul>
+		<br>
+		<router-link :to='{ name:"shoppinglist" }'>Go to the Shopping List page</router-link>
 	</div>
 </template>
 

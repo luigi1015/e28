@@ -3,8 +3,11 @@
 		ShoppingList
 		<br>
 		<ul>
-			<li v-for='(item) in shoppingList' v-bind:key='item.id'>{{ item.name }}</li>
+			<li v-for='(item) in shoppingList' v-bind:key='item.id'>{{ item }}</li>
 		</ul>
+		Number of items: {{ shoppingList.length }}
+		<br>
+		<router-link :to='{ name:"home" }'>Back to the Homepage</router-link>
 	</div>
 </template>
 
@@ -16,12 +19,14 @@ export default {
 	data: function () {
 		return {
 			shoppingList: [
-				{id: 1, name: "Item 1"},
-				{id: 2, name: "Item 2"},
-				{id: 3, name: "Item 3"},
-				{id: 4, name: "Item 4"},
-				{id: 5, name: "Item 5"}
 			]
+		}
+	},
+	mounted() {
+		//Get the shopping list from local storage:
+		const shopppingListLocalStorage = localStorage.getItem('shopppingList');
+		if( shopppingListLocalStorage !== null ) {
+			this.shoppingList = JSON.parse(shopppingListLocalStorage);
 		}
 	}
 }
