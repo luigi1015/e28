@@ -24,16 +24,11 @@ export default {
 	},
 	mounted() {
 		//Get the shopping list from local storage:
-		const shopppingListLocalStorage = localStorage.getItem('shopppingList');
-		if( shopppingListLocalStorage !== null ) {
-			this.shoppingList = JSON.parse(shopppingListLocalStorage);
-		}
+		this.shoppingList = this.$store.state.shoppingList;
 	},
 	methods: {
 		deleteShopppingListItem: function (item) {
-			var itemId = this.shoppingList.indexOf(item);
-			this.shoppingList.splice(itemId, 1);
-			localStorage.setItem('shopppingList', JSON.stringify(this.shoppingList));
+			this.$store.commit('removeShoppingListItem', item);
 		}
 	}
 }

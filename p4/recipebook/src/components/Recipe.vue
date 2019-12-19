@@ -68,16 +68,7 @@ export default {
 			this.favorite = true;
 		},
 		addShopppingList: function (name) {
-			var shopppingList = localStorage.getItem('shopppingList');
-			var shopppingListArray = null;
-			if( shopppingList === null ) {
-				shopppingListArray = [name];
-				localStorage.setItem('shopppingList', JSON.stringify(shopppingListArray));
-			} else {
-				shopppingListArray = JSON.parse(shopppingList);
-				shopppingListArray.push(name);
-				localStorage.setItem('shopppingList', JSON.stringify(shopppingListArray));
-			}
+			this.$store.commit('addShoppingListItem', name);
 		}
 	}
 }

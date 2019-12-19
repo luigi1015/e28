@@ -4,7 +4,7 @@
 		<br>
 		<ul v-if='recipes'>
 			<li v-for='(item) in recipes' v-bind:key='item.id'>
-				<router-link :to='{ name:"recipe", params: { id: item.id }}'>{{ item.name }}</router-link>
+				<router-link :to='{ name:"recipe", params: { id: item.id.toString() }}'>{{ item.name }}</router-link>
 			</li>
 		</ul>
 		<br>
